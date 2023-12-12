@@ -1,0 +1,24 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Disease Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Leaf Disease Prediction Result</h1>
+    
+    <!-- Display the predicted disease -->
+    <h2 class="resu">Predicted disease: {{ predicted_disease }}</h2>
+    
+    <!-- Display the uploaded image -->
+    <img class ="res" src="data:image/png;base64,{{ image_data_base64 }}" alt="Uploaded Leaf Image" style="max-width: 30%;">
+
+    <!-- Display error if any -->
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>

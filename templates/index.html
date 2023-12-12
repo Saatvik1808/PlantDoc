@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="hd">Leaf Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>LEAF DISEASE PREDICTION</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="image">Upload leaf image:</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <br>
+        <button class="button-36" type="submit">Predict</button>
+        <div id="loader" style="display: none;">
+            <img src="static/giphy.gif" alt="Loading..." />
+          </div>
+          
+    </form>
+    <br>
+    <p id="prediction"></p>
+    <div id="loader" style="display: none;">
+   
+    <script>
+        const form = document.getElementById("form");
+const loader = document.getElementById("loader");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  loader.style.display = "block"; // Show loader
+  const image = document.getElementById("image").files[0];
+  const formData = new FormData();
+  formData.append("image", image);
+  fetch("/predict", {
+    method: "POST",
+    body: formData
+  }).then(response => response.json()).then(data => {
+    loader.style.display = "none"; // Hide loader
+    document.getElementById("prediction").innerHTML = `Predicted disease: ${data.disease}`;
+  }).catch(error => {
+    loader.style.display = "none"; // Hide loader
+    console.error(error);
+  });
+});
+
+        
+    </script>
+</body>
+</html>
