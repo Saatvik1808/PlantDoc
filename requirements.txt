@@ -1,2 +1,4 @@
-Flask
-Gunicorn
+Flask==3.0.0
+Gunicorn==21.2.0
+numpy==1.26.2
+# Add other dependencies as needed
