@@ -1,6 +1,7 @@
-Flask==3.0.0
-Gunicorn==21.2.0
-numpy==1.25.2
+Flask
+Gunicorn    
+numpy
+pandas
 Pillow==10.0.0
 scikit-learn==1.3.0
 keras==2.15.0  # Adjust the version as needed
